@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.codecool.shop</OriginalElement>
+  <nodes>
+    <node x="64.16666666666666" y="205.701171875">com.codecool.shop.config</node>
+    <node x="116.41666666666669" y="295.701171875">com.codecool.shop.controller</node>
+    <node x="146.48809523809524" y="125.701171875">com.codecool.shop.dao</node>
+    <node x="40.0" y="15.701171875">com.codecool.shop.model</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.0" x="166.5" y="170.5" />
+  <SelectedNodes>
+    <node>com.codecool.shop.config</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

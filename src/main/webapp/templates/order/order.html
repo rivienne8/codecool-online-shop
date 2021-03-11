@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header.html :: header"></head>
+
+<body>
+<div class="customJumbotron jumbotron text-center">
+    <h2>Order</h2>
+</div>
+<div class="container">
+
+    <div id="optionLine">
+        <div class="card-text">
+            <a class="btn btn-success" href="/cart">Cart</a>
+            <span class="cartQuantity" th:if="${cart.getSize > 0}" th:text="${cart.getQuantity}">Quantity</span>
+
+        </div>
+
+        <div class="card-text">
+            <a class="btn btn-success" href="/">Main</a>
+        </div>
+
+        <div class="card-text">
+            <a class="btn btn-success" href="/cart">Back</a>
+        </div>
+    </div>
+<div th:if="${shipping}">
+    <div th:replace="cart/status.html :: status(active='order')"></div>
+</div>
+    <div class="container">
+        <table class="table">
+            <form th:action="@{'/order'}" method="post">
+                <thead>
+                <tr>
+                    <!--                        <th class="tableHeadField"></th>-->
+                    <th class="tableHeadField">Order information</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        First name:
+                        <input th:if="${shipping && shippingInfo != null}" class="inputInfo" type="text" name="firstName" required th:value="${shippingInfo.getFirstName()}">
+                        <input th:if="${!shipping || shippingInfo == null}" class="inputInfo" type="text" name="firstName" required>
+                    </td>
+                    <td>
+                        Last name:
+                        <input th:if="${shipping && shippingInfo != null}" class="inputInfo" type="text" name="lastName" required th:value="${shippingInfo.getLastName()}">
+                        <input th:if="${!shipping || shippingInfo == null}" class="inputInfo" type="text" name="lastName" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Email:
+                        <input th:if="${shipping && shippingInfo != null}" class="inputInfo" id="username" name="email" type="text" required th:value="${shippingInfo.getEmail()}">
+                        <input th:if="${!shipping || shippingInfo == null}" class="inputInfo" name="email" type="text" required>
+                    </td>
+                    <td>
+                        Phone number:
+                        <input th:if="${shipping && shippingInfo != null}" class="inputInfo" type="tel" name="phoneNumber" placeholder="123-456-789"
+                               pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" required th:value="${shippingInfo.getPhoneNumber()}">
+                        <input th:if="${!shipping || shippingInfo == null}" class="inputInfo" type="tel" name="phoneNumber" placeholder="123-456-789"
+                               pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Country:
+                        <input th:if="${shipping && shippingInfo != null}" class="inputInfo" type="text" name="country" required th:value="${shippingInfo.getCountry()}">
+                        <input th:if="${!shipping || shippingInfo == null}" class="inputInfo" type="text" name="country" required>
+                    </td>
+                    <td>
+                        Street:
+                        <input th:if="${shipping && shippingInfo != null}" class="inputInfo" type="text" name="street" required th:value="${shippingInfo.getStreet()}">
+                        <input th:if="${!shipping || shippingInfo == null}" class="inputInfo" type="text" name="street" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Post code:
+                        <input th:if="${shipping && shippingInfo != null}" class="inputInfo" type="tel" name="postCode" placeholder="00-000"
+                               pattern="[0-9]{2}-[0-9]{3}" required th:value="${shippingInfo.getPostCode()}">
+                        <input th:if="${!shipping || shippingInfo == null}" class="inputInfo" type="tel" name="postCode" placeholder="00-000"
+                               pattern="[0-9]{2}-[0-9]{3}" required>
+                    </td>
+                    <td>
+                        City:
+                        <input th:if="${shipping && shippingInfo != null}" class="inputInfo" type="text" name="city" required th:value="${shippingInfo.getCity()}">
+                        <input th:if="${!shipping || shippingInfo == null}" class="inputInfo" type="text" name="city" required>
+                    </td>
+                </tr>
+                </tbody>
+                <tr>
+                    <td>
+                        <input th:if="${shipping}" class="btn btn-success" type="submit" value="SAVE">
+                        <input th:if="${!shipping}" class="btn btn-success" type="submit" th:formaction="'/shipping/save'" value="SAVE">
+                    </td>
+                    <div th:if="${shipping}">
+                        <td id="totalPriceLabel" colspan="4">TOTAL PRICE:</td>
+                        <td id="totalPrice" th:text="${cart.getTotalPriceString}">TotalPrice</td>
+                    </div>
+                    <td></td>
+                </tr>
+            </form>
+            </form>
+        </table>
+    </div>
+</div>
+<div th:replace="footer.html :: copy"></div>
+</body>
+</html>

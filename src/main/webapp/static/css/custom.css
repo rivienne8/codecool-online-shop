@@ -1,0 +1,209 @@
+.glyphicon {
+    margin-right:5px;
+}
+.thumbnail
+{
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+.thumbnail img
+{
+    margin-top: 10px;
+}
+.item.list-group-item
+{
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
+{
+    background: #428bca;
+}
+
+.item.list-group-item .list-group-image
+{
+    margin-right: 10px;
+}
+.item.list-group-item .thumbnail
+{
+    margin-bottom: 0px;
+}
+.item.list-group-item .caption
+{
+    padding: 9px 9px 0px 9px;
+}
+.item.list-group-item:nth-of-type(odd)
+{
+    background: #eeeeee;
+}
+
+.item.list-group-item:before, .item.list-group-item:after
+{
+    display: table;
+    content: " ";
+}
+
+.item.list-group-item img
+{
+    float: left;
+}
+.item.list-group-item:after
+{
+    clear: both;
+}
+.list-group-item-text
+{
+    margin: 0 0 11px;
+}
+
+#cartContainer {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+}
+
+#content {
+    padding: 3rem;
+}
+
+.table {
+    width: 100%;
+    table-layout: initial;
+    margin-top: 3rem;
+}
+
+table td, table th{
+    padding-right: 5rem;
+    text-align: center;
+
+}
+
+table thead, table tbody, table tr   {
+    width: 100%;
+}
+
+table th, #totalPrice, #totalPriceLabel  {
+    font-size: larger;
+    font-weight: bolder ;
+}
+
+.table.tableCustom td {
+    vertical-align: unset;
+    align-content: center;
+}
+
+
+#optionLine {
+    display: flex;
+    align-content: center;
+    justify-content: flex-end;
+
+}
+
+#optionLine .btn {
+    margin-left: 2em;
+}
+
+#totalPriceLabel {
+    text-align: right;
+}
+
+.statusLine {
+    display: flex;
+    justify-content: stretch;
+    margin-top: 1rem;
+}
+
+.statusLine > div {
+    flex: 1;
+    background-color: #e9ecef;
+    text-align: center;
+}
+
+.statusLine .fas {
+    font-size: 1.5rem;
+}
+
+
+.far , .fas {
+    font-size: 0.8rem;
+    color: #28a745;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+
+.quantityBox {
+    display: inline-flex;
+    text-align: center;
+}
+
+
+div .active {
+    background-color: #28a745;
+}
+
+.jumbotron.customJumbotron {
+    margin-bottom: 0;
+}
+
+.cartQuantity {
+    display: block;
+    position: relative;
+    background-color: #31bc51;
+    top: -16%;
+    left: 70%;
+    z-index: 2;
+    text-align: center;
+    font-size: smaller;
+    color: #fff;
+    border: #2b9443 solid 0.1em;
+    box-sizing: initial;
+    border-radius: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+
+}
+
+.imageCol {
+    max-width: 8em;
+    height: auto;
+}
+
+
+input.underline {
+    border-bottom: 2px solid #444747;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    content: "\2713 ";
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    content: "\2716";}
+
+.message {
+    font-style: italic;
+    text-align: center;
+    color: #2b9443;
+    margin-right: 0;
+}
+

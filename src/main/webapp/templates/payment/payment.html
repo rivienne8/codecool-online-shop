@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header.html :: header">
+    <script
+            function setTwoNumberDecimal(event) {
+            this.value=parseFloat(this.value).toFixed(3);
+            }>
+    </script>
+
+</head>
+<body>
+<div class="customJumbotron jumbotron text-center">
+    <h2>Payment</h2>
+</div>
+<div class="container">
+    <div id="optionLine">
+        <div class="card-text">
+            <a class="btn btn-success" href="/cart">Cart</a>
+            <span class="cartQuantity" th:if="${cart.getSize > 0}" th:text="${cart.getQuantity}">Quantity</span>
+
+        </div>
+
+        <div class="card-text">
+            <a class="btn btn-success" href="/">Main</a>
+        </div>
+
+        <div class="card-text">
+            <a class="btn btn-success" href="/order">Back</a>
+        </div>
+    </div>
+
+    <div th:replace="cart/status.html :: status(active='payment')"></div>
+
+</div>
+<div class="container">
+    <script type="text/javascript">
+        function EnableDisableTextBox() {
+            var chkPayPal = document.getElementById("chkPayPal");
+            var paymentInputs = document.getElementsByClassName("inputPaymentInf");
+            var paymentInputsCard = document.getElementsByClassName("inputPaymentInfCard");
+            var i;
+            for (i=0; i<paymentInputs.length; i++){
+                paymentInputs[i].disabled = !chkPayPal.checked;
+                if (!paymentInputs.disabled) {
+                    paymentInputs[i].focus();
+                }
+            }
+            for (i=0; i<paymentInputsCard.length; i++) {
+                paymentInputsCard[i].disabled = chkPayPal.checked;
+                if (paymentInputsCard.disabled) {
+                    paymentInputsCard[i].focus();
+                }
+            }
+        }
+    </script>
+    <table class="table">
+        <form action="/payment" method="post">
+            <thead>
+            <tr>
+                <!--                        <th class="tableHeadField"></th>-->
+                <th class="tableHeadField">Credit Card</th>
+                <th class="tableHeadField">PayPal</th>
+                <th class="tableHeadField"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <img class="" src="/static/img/creditcard.jpg" alt="credit card" style="height:128px;">
+                    <input type="radio" id="chkCard" name="payment" value="Credit Card" onclick="EnableDisableTextBox()"
+                           style=" height:30px; width:30px;">
+                </td>
+                <td>
+                    <img class="" src="/static/img/paypal-logo.jpg" alt="paypal" style="height:128px;">
+                    <input type="radio" id="chkPayPal" name="payment" value="PayPal" onclick="EnableDisableTextBox()"
+                           style="height:30px; width:30px;">
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    Card number:
+                    <input class="inputPaymentInfCard" type="tel" name="paymentInputs" placeholder="1111-2222-3333-4444"
+                           pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" disabled="disabled">
+                </td>
+                <td>
+                    Email:
+                    <input class="inputPaymentInf" name="email" type="text"
+                           placeholder="abc@gmail.com" disabled="disabled">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Card holder:
+                    <input class="inputPaymentInfCard" type="text" name="paymentInputs" disabled="disabled">
+                </td>
+                <td>
+                    Password:
+                    <input class="inputPaymentInf" id="password" name="password" type="password" disabled="disabled">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Expiry date:
+                    <input class="inputPaymentInfCard" type="month" name="paymentInputs" disabled="disabled"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    CVV code:
+                    <input class="inputPaymentInfCard" type="number" onchange="setTwoNumberDecimal" min="0" max="999"
+                           step="1" value="000" name="paymentInputs" disabled="disabled"/>
+                </td>
+            </tr>
+
+            </tbody>
+            <tr>
+                <td>
+                    <input class="btn btn-success" type="submit" value="SAVE">
+                </td>
+                <td id="totalPriceLabel" colspan="4">TOTAL PRICE:</td>
+                <td id="totalPrice" th:text="${cart.getTotalPriceString}">TotalPrice</td>
+                <td></td>
+            </tr>
+        </form>
+    </table>
+</div>
+<div th:replace="footer.html :: copy"></div>
+</body>
+</html>

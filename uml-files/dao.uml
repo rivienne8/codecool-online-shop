@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.codecool.shop.dao</OriginalElement>
+  <nodes>
+    <node x="213.5" y="214.0">com.codecool.shop.dao.implementation</node>
+    <node x="0.0" y="22.0">com.codecool.shop.dao.SupplierDao</node>
+    <node x="465.0" y="22.0">com.codecool.shop.dao.ProductCategoryDao</node>
+    <node x="190.0" y="0.0">com.codecool.shop.dao.ProductDao</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.codecool.shop.dao.implementation" target="com.codecool.shop.dao.SupplierDao">
+      <point x="-69.33333333333331" y="-15.0" />
+      <point x="248.16666666666669" y="189.0" />
+      <point x="85.0" y="189.0" />
+      <point x="0.0" y="60.0" />
+    </edge>
+    <edge source="com.codecool.shop.dao.implementation" target="com.codecool.shop.dao.ProductDao">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="com.codecool.shop.dao.implementation" target="com.codecool.shop.dao.ProductCategoryDao">
+      <point x="69.33333333333331" y="-15.0" />
+      <point x="386.8333333333333" y="189.0" />
+      <point x="572.5" y="189.0" />
+      <point x="0.0" y="60.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="340.0" y="122.0" />
+  <SelectedNodes>
+    <node>com.codecool.shop.dao.ProductDao</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

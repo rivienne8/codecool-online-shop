@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Codecool" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Codecool Shop - Cart</title>
+
+    <!-- Bootstrap components -->
+    <!-- Latest compiled and minified Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <!--Latest compiled and minified Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- End of Bootstrap components -->
+
+    <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
+    <link rel="icon" href="data:,">
+    <script src="https://kit.fontawesome.com/05de84e1ca.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="customJumbotron jumbotron text-center">
+    <h2>CART</h2>
+</div>
+<div class="container">
+    <a class="btn btn-success" href="/login">Login</a>
+    <a class="btn btn-success" href="/register">Register</a>
+</div>
+<div class="container">
+    <div id="optionLine" >
+        <div class="message card-text " th:if="${message != ''}" th:text="${message}">
+            Saved
+        </div>
+
+        <div class="card-text">
+            <a class="btn btn-success" th:if="${isLoggedIn}" th:text ="'Save Cart'" href="/cart/save" >Save Cart</a>
+        </div>
+
+        <div class="card-text">
+            <a class="btn btn-success" th:if="${isLoggedIn}" th:text ="'Save Shipping Info'" href="/shipping/save" >Shipping Info</a>
+        </div>
+
+        <div class="card-text">
+            <a class="btn btn-success" href="/cart">Cart</a>
+            <span class="cartQuantity" th:if="${cart.getSize > 0}" th:text="${cart.getQuantity}">Quantity</span>
+
+        </div>
+        <div class="card-text">
+            <a class="btn btn-success" href="/">Main</a>
+        </div>
+        <div class="card-text">
+            <a class="btn btn-success" href="/order">Next</a>
+        </div>
+    </div>
+    <div th:replace="cart/status.html :: status(active='products')"></div>
+
+</div>
+
+
+<div class="container">
+
+            <table class="tableCustom table">
+                <thead>
+                    <tr>
+                        <th class="tableHeadField">Product</th>
+                        <th class="tableHeadField" >Name</th>
+                        <th class="tableHeadField" >Delivery time</th>
+                        <th class="tableHeadField" >Price</th>
+                        <th class="tableHeadField" >Qty</th>
+                        <th class="tableHeadField" >Subtotal</th>
+                        <th class="tableHeadField" ></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="productLine : ${productsLines.values()}" >
+                        <td class="tableField" id="imageCol" ><img class="imageCol" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${productLine.product.id} + '.jpg'" alt="" /> </td>
+                        <td class="tableField" id="productName" th:text="${productLine.product.getName}">Product</td>
+                        <td class="tableField" id="deliveryTime" > 48h </td>
+                        <td class="tableField" id="defaultPrice" th:text="${productLine.product.getPrice}">Price</td>
+                        <td class="tableField" id="quantityBox">
+                            <div class="quantityBox">
+                                <a th:href="@{/cart/update(id=${productLine.product.getId}, action='decrease')}" >
+                                    <i class="fas fa-minus"></i>
+                                </a>
+                                <div id="quantity" th:text="${productLine.getQuantity}"> Quantity </div>
+                                <a th:href="@{/cart/update(id=${productLine.product.getId}, action='increase')}" >
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </div>
+                        </td>
+                        <td class="tableField" id="subtotal" th:text="${productLine.getTotalPriceString}">SubTotalPrice</td>
+                        <td class="tableField" id="remove" >
+                            <a th:href="@{/cart/update(id=${productLine.product.getId}, action='remove')}" >
+                                <i class="far fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="totalPriceLabel" colspan="4">TOTAL PRICE:  </td>
+                        <td id="totalPrice" th:text="${cart.getTotalPriceString}">TotalPrice</td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+</div>
+
+
+<div th:replace="footer.html :: copy" ></div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://kit.fontawesome.com/05de84e1ca.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div th:fragment="status (active)">
+    <div class="statusLine">
+        <div id="cartContent" class="" th:classappend="${active == 'products'} ?
+        'active' : ''">
+            Products
+        </div>
+        <i class="fas fa-angle-right"></i>
+        <div id="orderForm" class="" th:classappend="${active == 'order'} ?
+        'active' : ''">
+            Order
+        </div>
+        <i class="fas fa-angle-right"></i>
+        <div id="payment" class="" th:classappend="${active == 'payment'} ?
+        'active' : ''">
+            Payment
+        </div>
+        <i class="fas fa-angle-right"></i>
+        <div id="approve" class="" th:classappend="${active == 'finish'} ?
+        'active' : ''">
+            Finish
+        </div>
+    </div>
+</div>
+
+<div th:fragment="message">
+
+</div>
+
+</body>
+</html>
