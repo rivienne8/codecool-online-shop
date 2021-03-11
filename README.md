@@ -4,7 +4,7 @@ _Project developed in February 2021. (Codecool course)_
 
 _Developers: Joanna Rzeszótko-Doniec, Jakub Zieliński, Piotr Wójcik_
 
-_Key words: web application, online shop, java, maven, thymeleaf, database (DaoJdbc),logback. Inn progress: mocking, unit tests, log in, user registration_
+_Key words: web application, online shop, java, maven, thymeleaf, database (DaoJdbc),logback. In progress: mocking, unit tests, log in, user registration_
 
 
 ![start](printscreens/start.png)
